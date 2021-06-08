@@ -1,6 +1,6 @@
 # algorithm-note
 
-
+> 参考：[eh-xing-qing](https://leetcode-cn.com/u/eh-xing-qing/)、
 
 ### leetcode-28 实现[strStr()](https://leetcode-cn.com/problems/implement-strstr/solution/shi-xian-strstr-by-leetcode-solution-ds6y/)
 
@@ -25,7 +25,10 @@
 >
 > [背包九讲blog](https://www.cnblogs.com/jbelial/articles/2116074.html)
 >
-> 
+
+## 递归
+
+[对称性递归](./对称性递归.md)
 
 
 
