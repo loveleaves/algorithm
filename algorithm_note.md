@@ -1,6 +1,8 @@
 # algorithm-note
 
 > 参考：[eh-xing-qing](https://leetcode-cn.com/u/eh-xing-qing/)、
+>
+> website:[PTA](https://pintia.cn/problem-sets?tab=0) 、[ACWing](https://www.acwing.com/problem/) 、[LeetCode](https://leetcode-cn.com/problemset/all/)
 
 ### leetcode-28 实现[strStr()](https://leetcode-cn.com/problems/implement-strstr/solution/shi-xian-strstr-by-leetcode-solution-ds6y/)
 
@@ -21,10 +23,11 @@
 
 ### 动态规划
 
+> [dp背包问题](./dp背包问题,md)
+>
 > [背包九讲专题](https://www.bilibili.com/video/BV1qt411Z7nE?from=search&seid=3231012459135651472)
 >
 > [背包九讲blog](https://www.cnblogs.com/jbelial/articles/2116074.html)
->
 
 ## 递归
 
