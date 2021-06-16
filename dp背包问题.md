@@ -194,10 +194,9 @@ int numSquares(int n)
     dp[0] = 0;
     for (int num = 1; num <= sqrt(n); num++)
     {
-        for (int i = 0; i <= n; i++)
+        for (int i = num * num; i <= n; i++)
         {
-            if (i >= num * num)
-                dp[i] = min(dp[i], dp[i - num * num] + 1);
+            dp[i] = min(dp[i], dp[i - num * num] + 1);
         }
     }
     return dp[n];
@@ -276,8 +275,10 @@ int numRollsToTarget(int d, int f, int target)
     dp[0][0] = 1;
     for (int i = 1; i <= d; i++)
         for (int j = 1; j <= target; j++)
-            for (int k = 1; k <= f && j >= k; k++)
-                dp[i][j] += dp[i - 1][j - k];
+            for (int k = 1; k <= f && j >= k; k++) {
+                    dp[i][j] += dp[i - 1][j - k];
+                    dp[i][j] %= 1000000007;
+                }
     return dp[d][target];
 }
 ```
