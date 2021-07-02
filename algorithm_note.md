@@ -1,6 +1,6 @@
 # algorithm-note
 
-> 参考：[eh-xing-qing](https://leetcode-cn.com/u/eh-xing-qing/)、
+> 参考：[eh-xing-qing](https://leetcode-cn.com/u/eh-xing-qing/)、[C++ Plus](https://www.cplusplus.com/)
 >
 > website:[PTA](https://pintia.cn/problem-sets?tab=0) 、[ACWing](https://www.acwing.com/problem/) 、[LeetCode](https://leetcode-cn.com/problemset/all/)
 
