@@ -21,23 +21,28 @@
 
 
 
+### 贪心算法
+
+[greedy algorithm](./greedy algorithm.md)
+
+
+
 ### 动态规划
 
-> [dp背包问题](./dp背包问题,md)
->
-> [背包九讲专题](https://www.bilibili.com/video/BV1qt411Z7nE?from=search&seid=3231012459135651472)
->
-> [背包九讲blog](https://www.cnblogs.com/jbelial/articles/2116074.html)
+[dp背包问题](./dp背包问题,md)
+
+[背包九讲专题](https://www.bilibili.com/video/BV1qt411Z7nE?from=search&seid=3231012459135651472)
+
+[背包九讲blog](https://www.cnblogs.com/jbelial/articles/2116074.html)
 
 ## 递归
 
-> [对称性递归](./对称性递归.md)
+[对称性递归](./对称性递归.md)
 
 
 
 ## 树
 
->[二叉树路径](./二叉树路径.md)
->
+[二叉树路径](./二叉树路径.md)
 
 [字符串处理](./字符串处理.md)
