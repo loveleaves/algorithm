@@ -25,6 +25,19 @@
 
 [greedy algorithm](./greedy algorithm.md)
 
+> **注意**sort函数中vector<int>& 和  vector<int>的差异
+>
+> ``` c++
+> sort(intervals.begin(), intervals.end(), [](vector<int>& a, vector<int>& b) {
+>         return a[1] < b[1];
+>         });
+> 和
+> sort(intervals.begin(), intervals.end(), [](vector<int> a, vector<int> b) {
+>         return a[1] < b[1];
+>         });
+> 差异性
+> ```
+
 
 
 ### 动态规划
@@ -46,3 +59,4 @@
 [二叉树路径](./二叉树路径.md)
 
 [字符串处理](./字符串处理.md)
+

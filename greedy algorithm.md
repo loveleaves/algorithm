@@ -75,3 +75,63 @@ int candy(vector<int>& ratings) {
 }
 ```
 
+
+
+#### [435. 无重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/)
+
+``` c++
+//优先保留结尾小且不相交的区间
+int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+    if (intervals.empty()) return 0;
+    int n = intervals.size();
+    sort(intervals.begin(), intervals.end(), [](vector<int>& a, vector<int>& b) {
+        return a[1] < b[1];
+    });
+    int removed = 0, prev = intervals[0][1];
+    for (int i = 1; i < n; ++i)
+    {
+        if (intervals[i][0] < prev) ++removed;
+        else prev = intervals[i][1];
+    }
+    return removed;
+}
+```
+
+
+
+#### [605. 种花问题](https://leetcode-cn.com/problems/can-place-flowers/)
+
+``` c++
+//模拟法
+bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+    int i, size = flowerbed.size();
+    if (size == 1) {
+        if (flowerbed[0] == 0) n--;
+    }
+    else if (size == 2) {
+        if (flowerbed[0] == 0 && flowerbed[1] == 0)
+            n--;
+    }
+    else {
+        if (flowerbed[0] == 0 && flowerbed[1] == 0) {
+            n--;
+            flowerbed[0] = 1;
+        }
+        for (i = 2; i < size-1; i++) {
+            if (flowerbed[i] == 0 && flowerbed[i-1] == 0&&flowerbed[i+1]==0) {
+                n--;
+                flowerbed[i] = 1;
+                i++;
+            }
+
+        }
+        if (flowerbed[size-2] == 0 && flowerbed[size-1] == 0) {
+            n--;
+            flowerbed[size-1] = 1;
+        }
+    }
+    return n <= 0;
+
+}
+```
+
