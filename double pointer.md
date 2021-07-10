@@ -97,3 +97,38 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
 }
 ```
 
+
+
+#### [567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)
+
+``` c++
+bool checkInclusion(string s1, string s2) {
+    int n = s1.length(), m = s2.length();
+    if (n > m)
+    {
+        return false;
+    }
+    vector<int> cnt(26);
+    for (int i = 0; i < n; ++i)
+    {
+        --cnt[s1[i] - 'a'];
+    }
+    int left = 0;
+    for (int right = 0; right < m; ++right)//右边界向右移动
+    {
+        int x = s2[right] - 'a';
+        ++cnt[x];
+        while (cnt[x] > 0)//左边界向右移动
+        {
+            --cnt[s2[left] - 'a'];//移出元素注意恢复其原始状态
+            ++left;
+        }
+        if (right - left + 1 == n)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+```
+
