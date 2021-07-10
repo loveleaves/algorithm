@@ -68,3 +68,32 @@ string reverseWords(string s) {
 }
 ```
 
+
+
+#### [19. 删除链表的倒数第 N 个结点](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+
+> 在对链表进行操作时，一种常用的技巧是添加一个哑节点（dummy node），它的next 指针指向链表的头节点。这样我们就不需要对头节点进行特殊的判断了。
+>
+> 比如此题删除头节点时要进行特殊判断。
+>
+> 同时删除节点问题要考虑被删除节点的空间释放问题，下面不考虑。
+
+``` c++
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    ListNode* dummy = new ListNode(0, head);//增加哑节点避免特殊判断
+    ListNode* first = head;
+    ListNode* end = dummy;
+    for (int i = 0; i < n; ++i) {
+        first = first->next;
+    }
+    while (first) {
+        first = first->next;
+        end = end->next;
+    }
+    end->next = end->next->next;
+    ListNode* ans = dummy->next;
+    delete dummy;
+    return ans;
+}
+```
+
