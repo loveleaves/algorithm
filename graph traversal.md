@@ -249,3 +249,61 @@ TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
 }
 ```
 
+#### [116. 填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
+
+- 层次遍历--对同一层节点同时进行处理
+- 基于BFS
+
+``` c++
+Node* connect(Node* root) {
+    if(root == nullptr) {
+        return root;
+    }
+    queue<Node*> Q;
+    Q.push(root);
+    //while和for循环控制同一层
+    while(!Q.empty()) {
+        int size = Q.size();
+        for(int i = 0; i < size; ++i) {
+            //for循环控制只处理同一层
+            Node* node = Q.front();
+            Q.pop();
+            if(i < size - 1) {
+                node->next = Q.front();
+            }
+            if(node->left != nullptr) {
+                Q.push(node->left);
+            }
+            if(node->right != nullptr) {
+                Q.push(node->right);
+            }
+        }
+    }
+    return root;
+}
+```
+
+或利用上一层设置好的next指针，无需借助队列
+
+``` c++
+Node* connect(Node* root) {
+    if(!root) {
+        return root;
+    }
+    Node* leftmost = root;
+    while(leftmost->left != nullptr) {
+        //通过node->left控制遍历全部层
+        Node* head = leftmost;
+        while(head != nullptr) {
+            head->left->next = head->right;
+            if(head->next != nullptr) {
+                head->right->next = head->next->left;
+            }
+            head = head->next;
+        }
+        leftmost = leftmost->left;
+    }
+    return root;
+}
+```
+
