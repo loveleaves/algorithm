@@ -1,18 +1,16 @@
 # 背包问题
 
-### 背包问题：
+## 解决思路
 
-> 背包问题是动态规划非常重要的一类问题，它有很多变种，但题目千变万化都离不开我根据力扣上背包问题的题解和一些大佬的经验总结的解题模板
+用子问题定义状态 ==》状态转移方程 ==》初始化条件 ==》空间压缩
 
 ### 背包定义：
-那么什么样的问题可以被称作为背包问题？换言之，我们拿到题目如何透过题目的不同包装形式看到里面背包问题的不变内核呢？
-我对背包问题定义的理解：
-给定一个背包容量target，再给定一个数组nums(物品)，能否按一定方式选取nums中的元素得到target
+
+给定一个背包容量target，再给定一个数组`nums`(物品)，能否按一定方式选取`nums`中的元素得到`target`
 **注意**：
-1、背包容量target和物品nums的类型可能是数，也可能是字符串
-2、target可能题目已经给出(显式)，也可能是需要我们从题目的信息中挖掘出来(非显式)(常见的非显式target比如sum/2等)
-3、选取方式有常见的一下几种：每个元素选一次/每个元素选多次/选元素进行排列组合
-那么对应的背包问题就是下面我们要讲的背包分类
+1、背包容量`target`和物品`nums`的类型可能是数，也可能是字符串
+2、`target`可能题目已经给出(显式)，也可能是需要我们从题目的信息中挖掘出来(非显式)(常见的非显式`target`比如`sum/2`等)
+3、选取方式有常见的以下几种：每个元素选一次/每个元素选多次/选元素进行排列组合，那么对应的背包问题就是下面我们要讲的背包分类
 
 ### 背包问题分类：
 常见的背包类型主要有以下几种：
@@ -44,8 +42,7 @@
 
 ``` c++
 // 0-1背包问题母代码(二维)
-void bags()
-{
+void bags() {
     vector<int> weight = {1, 3, 4};   //各个物品的重量
     vector<int> value = {15, 20, 30}; //对应的价值
     int bagWeight = 4;                //背包最大能放下多少重的物品
@@ -125,14 +122,11 @@ void test_1_wei_bag_problem()
 // 完全背包最值问题：外循环coins,内循环amount正序,应用状态方程1
 
 ``` c++
-int coinChange(vector<int> &coins, int amount)
-{
+int coinChange(vector<int> &coins, int amount) {
     vector<long long> dp(amount + 1, INT_MAX); //给dp数组每个位置赋初值为INT_MAX是为了最后判断是否能填满amount,要用long long 类型
     dp[0] = 0;  //dp[i]:换到面值i所用的最小数量
-    for (int coin : coins)
-    {
-        for (int i = 0; i <= amount; i++)
-        {
+    for (int coin : coins) {
+        for (int i = 0; i <= amount; i++) {
             if (coin <= i)
                 dp[i] = min(dp[i], dp[i - coin] + 1);
         }
@@ -147,7 +141,7 @@ int coinChange(vector<int> &coins, int amount)
 
 ```c++
 bool canPartition(vector<int> &nums)
-{
+{ 
     int sum = accumulate(nums.begin(), nums.end(), 0);
     if (sum % 2 == 1)  //如果是和为奇数显然无法分成两个等和子集
         return false;
@@ -163,7 +157,7 @@ bool canPartition(vector<int> &nums)
 
 494. [目标和](https://leetcode-cn.com/problems/target-sum/)
 // 目标和：给数组里的每个数字添加正负号得到target
-// 数组和sum,目标和s, 正数和x,负数和y,则x+y=sum,x-y=s,那么x=(s+sum)/2=target
+// 数组和sum,目标和target, 带'+'号数和为x,则带'-'号数和sum-x,则x - (sum-x) = target,那么x=(target+sum)/2
 // 0-1背包不考虑元素顺序的组合问题:选nums里的数得到target的种数,外循环nums,内循环target倒序,应用状态方程3
 
 ```c++

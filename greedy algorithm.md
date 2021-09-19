@@ -135,3 +135,29 @@ bool canPlaceFlowers(vector<int>& flowerbed, int n) {
 }
 ```
 
+#### [122. 买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
+
+``` c++
+int maxProfit(vector<int>& prices) {   
+    int ans = 0;
+    int n = prices.size();
+    for (int i = 1; i < n; ++i) {
+        ans += max(0, prices[i] - prices[i - 1]);
+    }
+    return ans;
+}
+```
+
+#### [452. 用最少数量的箭引爆气球](https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/)
+
+
+
+#### [763. 划分字母区间](https://leetcode-cn.com/problems/partition-labels/)
+
+
+
+#### [406. 根据身高重建队列](https://leetcode-cn.com/problems/queue-reconstruction-by-height/)
+
+
+
+#### [665. 非递减数列](https://leetcode-cn.com/problems/non-decreasing-array/)

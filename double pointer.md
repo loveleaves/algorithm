@@ -1,6 +1,69 @@
 # 双指针
 
-使用两个指针head和tail进行前后位置确定。
+[TOC]
+
+## 算法解释
+
+双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多
+个数组的多个指针。
+
+- 若两个指针指向同一数组，遍历方向相同且不会相交，则也称为滑动窗口（两个指针包围的
+  区域即为当前的窗口），经常用于区间搜索。
+- 若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是
+  排好序的。
+
+#### [88. 合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)
+
+``` c++
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    int pos = n-- + m-- - 1;
+    while(n >= 0 && m >= 0) {
+        nums1[pos--] = nums1[m] > nums2[n] ? nums1[m--] : nums2[n--];
+    }
+    while(n >= 0) {
+        nums1[pos--] = nums2[n--];
+    }
+}
+```
+
+#### [167. 两数之和 II - 输入有序数组](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
+
+``` c++
+vector<int> twoSum(vector<int>& numbers, int target) {
+    int head = 0, tail = numbers.size() - 1;
+    while(head <= tail) {
+        int sum = numbers[head] + numbers[tail];
+        if(sum == target) return {head + 1, tail + 1};
+        else if(sum < target) ++head;
+        else --tail;
+    }
+    return {-1,-1};
+}
+```
+
+#### [142. 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+
+``` c++
+ListNode *detectCycle(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+    while (fast != nullptr) {
+        slow = slow->next;
+        if (fast->next == nullptr) {
+            return nullptr;
+        }
+        fast = fast->next->next;
+        if (fast == slow) {
+            ListNode *ptr = head;
+            while (ptr != slow) {
+                ptr = ptr->next;
+                slow = slow->next;
+            }
+            return ptr;
+        }
+    }
+    return nullptr;
+}
+```
 
 
 
@@ -129,6 +192,28 @@ bool checkInclusion(string s1, string s2) {
         }
     }
     return false;
+}
+```
+
+#### [42. 接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
+
+``` c++
+int trap(vector<int>& height) {
+    int ans = 0;
+    int left = 0, right = height.size() - 1;
+    int leftMax = 0, rightMax = 0;
+    while (left < right) {
+        leftMax = max(leftMax, height[left]);
+        rightMax = max(rightMax, height[right]);
+        if (height[left] < height[right]) {
+            ans += leftMax - height[left];
+            ++left;
+        } else {
+            ans += rightMax - height[right];
+            --right;
+        }
+    }
+    return ans;
 }
 ```
 
