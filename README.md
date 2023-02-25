@@ -1,3 +1,0 @@
-# algorithm
-
-Nothing，just begin

@@ -1,0 +1,5 @@
+run_python:
+    image: python:3
+    script:
+        - python 2.1.py
+        - python 2.2.py
